@@ -1,0 +1,5 @@
+pair_id,target,sentence,expected_sense
+bank_demo,bank,"I sat on the bank of the river.",river bank
+bank_demo,bank,"I withdrew money from the bank.",financial institution
+plant_demo,plant,"During the night shift, workers assembled trucks at the plant.",factory
+plant_demo,plant,"She watered the plant after noticing that its leaves had begun to droop.",living plant

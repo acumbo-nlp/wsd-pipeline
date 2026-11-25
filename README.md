@@ -1,33 +1,89 @@
 # WSD Pipeline
 
-This project compares four methods for choosing the meaning of *bank* in
-English. The current experiment covers two senses, river bank and financial
-institution.
+How much context does a model need to choose the right meaning of an
+ambiguous word? This project compares a pretrained MiniLM model reading a
+full sentence with the same model reading up to four words on either side
+of the target. Both versions rank definitions from WordNet 3.0.
 
-## Results
+## Controlled context test
 
-Each dataset has three pairs of sentences. A pair counts as correct only
-when the method predicts both meanings correctly.
+The test contains 36 pairs across six English nouns: *bank*, *plant*,
+*bat*, *crane*, *mouse*, and *spring*. The sentences were written with AI
+assistance for this experiment. Each pair uses two different meanings of
+the same word and counts as correct when both predictions are correct.
 
-| Method | Dev sentences | Dev pairs | Test sentences | Test pairs |
-|---|---:|---:|---:|---:|
-| Keywords | 4/6 | 1/3 | 3/6 | 0/3 |
-| Lesk | 5/6 | 2/3 | 3/6 | 0/3 |
-| MiniLM, full sentence | 4/6 | 1/3 | 4/6 | 1/3 |
-| MiniLM, four words on either side | 5/6 | 2/3 | 2/6 | 0/3 |
+| Method | Sentences | Pairs | Nearby clue | Distracting clues | Distant clue |
+|---|---:|---:|---:|---:|---:|
+| Keyword rules | 10/72 | 3/36 | 1/12 | 1/12 | 1/12 |
+| NLTK Lesk | 36/72 | 4/36 | 3/12 | 0/12 | 1/12 |
+| MiniLM, full sentence | 41/72 | 9/36 | 4/12 | 0/12 | 5/12 |
+| MiniLM, four words per side | 47/72 | 13/36 | 9/12 | 4/12 | 0/12 |
 
-Full-sentence MiniLM was the only method to solve `late_clue`. The two
-sentences in that pair have identical local windows, and the words that
-identify the correct meanings appear later.
+In `crane-late-01`, the crane opens its wings in one sentence and lifts
+a steel beam in the other. Both actions occur beyond the crop. The
+full-sentence model gets both senses right. The cropped inputs are
+identical, so the windowed model makes the same prediction twice.
 
-## Run the test
+## SemEval-2015
 
-With a Python 3.13 virtual environment active, run these commands.
+The public benchmark contains 1,022 annotated occurrences. The XML
+identifies the target and its part of speech. The evaluator considers
+all WordNet candidates for that lemma and part of speech and accepts
+any of the gold keys assigned to the occurrence.
 
-```bash
-python -m pip install -r requirements.txt
-python -m nltk.downloader wordnet
-python demo.py --method reranker --data data/test_pairs.csv
+| Method | Correct | Accuracy |
+|---|---:|---:|
+| WordNet first sense | 693/1,022 | 67.8% |
+| MiniLM, full sentence | 509/1,022 | 49.8% |
+| MiniLM, four words per side | 532/1,022 | 52.1% |
+
+The first-sense rule was the strongest method in this run. Its score
+matches the published reference. For comparison, the supervised
+GlossBERT model trained on SemCor reported 80.4% F1 on this benchmark.
+[Raganato et al., Table 2](https://aclanthology.org/E17-1010/)
+· [Huang et al., Table 3](https://aclanthology.org/D19-1355/)
+
+## Reproduce the results
+
+From the repository root, run these commands in PowerShell with
+Python 3.13 installed.
+
+```powershell
+py -3.13 -m venv .venv
+$wsdPython = '.\.venv\Scripts\python.exe'
+& $wsdPython -m pip install -r requirements.txt
+& $wsdPython -m nltk.downloader wordnet
 ```
 
-FastEmbed downloads the MiniLM model on the first run.
+### Controlled context test
+
+```powershell
+foreach ($wsdMethod in "keywords", "lesk", "reranker", "reranker-window") {
+    $wsdRows = & $wsdPython demo.py --method $wsdMethod --data data/context_pairs.csv
+    Write-Host $wsdMethod
+    $wsdRows | Select-Object -Last 2
+
+    foreach ($wsdCondition in "near", "distractor", "late") {
+        $wsdPattern = '-' + $wsdCondition + '-[0-9]+ True$'
+        $wsdCorrect = @($wsdRows | Select-String -Pattern $wsdPattern).Count
+        Write-Host "$wsdCondition $wsdCorrect/12"
+    }
+}
+```
+
+The first MiniLM run downloads the model. Inference runs on CPU.
+[MiniLM model card](https://huggingface.co/Xenova/ms-marco-MiniLM-L-6-v2)
+
+### Public benchmark
+
+Download the English evaluation data in Raganato format from the
+versioned mirror. [Original SemEval task](https://aclanthology.org/S15-2049/)
+· [Archive release](https://github.com/alvations/pywsd-datasets/releases/tag/v0.1.0)
+
+```powershell
+New-Item -ItemType Directory -Force data/external | Out-Null
+Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/alvations/pywsd-datasets/releases/download/v0.1.0/raganato-v0.1.0.zip' -OutFile 'data/external/raganato-v0.1.0.zip'
+Expand-Archive -LiteralPath 'data/external/raganato-v0.1.0.zip' -DestinationPath 'data/external' -Force
+& $wsdPython evaluate_semeval.py
+& $wsdPython evaluate_semeval.py --minilm
+```

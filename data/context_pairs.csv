@@ -1,0 +1,73 @@
+pair_id,target,sentence,expected_sense,condition
+bank-near-01,bank,The canoe scraped the bank as we rounded the bend.,river bank,near
+bank-near-01,bank,The bank canceled my debit card after detecting fraud.,financial institution,near
+bank-near-02,bank,The otter scrambled up the bank and vanished into the reeds.,river bank,near
+bank-near-02,bank,Our bank lowered the interest rate on the loan.,financial institution,near
+bank-distractor-01,bank,The lender's surveyor measured the eroded bank before valuing the riverside property.,river bank,distractor
+bank-distractor-01,bank,"After the river washed out their bridge, the bank agreed to extend the farm's loan.",financial institution,distractor
+bank-distractor-02,bank,Several coins spilled from the cash box and rolled down the bank into the stream.,river bank,distractor
+bank-distractor-02,bank,The bank waived overdraft fees for customers whose homes were damaged when the creek overflowed.,financial institution,distractor
+bank-late-01,bank,"We heard about the bank while we were getting lunch, and later learned that part of it had collapsed into the creek.",river bank,late
+bank-late-01,bank,"We heard about the bank while we were getting lunch, and later learned that it had approved nearly every loan application that month.",financial institution,late
+bank-late-02,bank,They asked whether the bank could still be used as a place to launch kayaks after the trail washed out.,river bank,late
+bank-late-02,bank,They asked whether the bank could still be used to receive donations and issue payments after the merger.,financial institution,late
+plant-near-01,plant,Machinists at the plant build turbines for offshore wind farms.,factory,near
+plant-near-01,plant,The plant wilted after three weeks without water.,living plant,near
+plant-near-02,plant,The plant produces sheet steel from recycled scrap.,factory,near
+plant-near-02,plant,The plant put out new shoots in early spring.,living plant,near
+plant-distractor-01,plant,"Tree roots damaged a water main, forcing the plant to halt production for the afternoon.",factory,distractor
+plant-distractor-01,plant,A botanist rescued a wilting plant from the loading dock before the trucks arrived.,living plant,distractor
+plant-distractor-02,plant,The plant ran a second shift to fill orders for fertilizer as local farmers began sowing their crops.,factory,distractor
+plant-distractor-02,plant,"Before restarting the conveyor, an operator noticed a plant growing through a crack in the concrete.",living plant,distractor
+plant-late-01,plant,We checked on the plant again after the storm and found that the backup generator had kept the assembly line running.,factory,late
+plant-late-01,plant,We checked on the plant again after the storm and found that several stems had snapped.,living plant,late
+plant-late-02,plant,She said that the plant would need more attention now that one of its production lines had failed a safety inspection.,factory,late
+plant-late-02,plant,She said that the plant would need more attention now that its leaves had started to curl.,living plant,late
+bat-near-01,bat,"At dusk, a bat flew from the cave to catch insects.",flying mammal,near
+bat-near-01,bat,"During batting practice, Maya swung the bat and sent the ball across the field.",sports bat,near
+bat-near-02,bat,The injured bat spread one wing as the vet opened the cage.,flying mammal,near
+bat-near-02,bat,Eli gripped the bat by its handle and stepped up to the plate.,sports bat,near
+bat-distractor-01,bat,"At baseball practice, a bat swooped past the batter and caught a moth.",flying mammal,distractor
+bat-distractor-01,bat,"While moths circled the stadium lights, Rosa swung the bat and drove the pitch into left field.",sports bat,distractor
+bat-distractor-02,bat,"When the softball game ended, the coach spotted a bat hanging upside down under the shelter roof, with its wings folded.",flying mammal,distractor
+bat-distractor-02,bat,"When a dark winged shape fluttered out of the equipment shed at dusk, Luis grabbed the bat by its handle and slid it into his baseball bag.",sports bat,distractor
+bat-late-01,bat,"We could see the bat from where we were standing, but it was hard to see its wings until it flew up into the rafters.",flying mammal,late
+bat-late-01,bat,"We could see the bat from where we were standing, but it was hard to see the crack in its handle until the umpire picked it up.",sports bat,late
+bat-late-02,bat,The guide pointed to the bat on the far side of the display and explained how it uses echoes to hunt insects.,flying mammal,late
+bat-late-02,bat,The guide pointed to the bat on the far side of the display and explained that it was used to hit the winning home run.,sports bat,late
+crane-near-01,crane,"The crane waded through the marsh on long legs, searching for frogs.",bird,near
+crane-near-01,crane,A crane raised a pallet of bricks to the roof.,lifting machine,near
+crane-near-02,crane,"At sunrise, a crane spread its wings and rose from the wetland.",bird,near
+crane-near-02,crane,The operator swung the crane toward the lorry to unload the concrete panels.,lifting machine,near
+crane-distractor-01,crane,"Beside the construction site, a crane spread its wings and flew over the new bridge.",bird,distractor
+crane-distractor-01,crane,"On the edge of the marsh, a crane lifted a stranded boat from the water while herons watched from the reeds.",lifting machine,distractor
+crane-distractor-02,crane,"As workers hoisted steel beams nearby, a crane stalked frogs through the reeds.",bird,distractor
+crane-distractor-02,crane,"While migratory birds settled among the reeds, a crane lowered a new footbridge onto its supports.",lifting machine,distractor
+crane-late-01,crane,We all watched the crane from across the narrow channel until it opened its wings and flew toward the reeds.,bird,late
+crane-late-01,crane,We all watched the crane from across the narrow channel until it lifted the last steel beam onto the bridge.,lifting machine,late
+crane-late-02,crane,On Tuesday Nina photographed the crane at the edge of the park just as it bent its long neck to catch a frog.,bird,late
+crane-late-02,crane,On Tuesday Nina photographed the crane at the edge of the park just as it swung a concrete pipe over the fence.,lifting machine,late
+mouse-near-01,mouse,"Sitting by the feeder, the mouse nibbled a sunflower seed.",rodent,near
+mouse-near-01,mouse,"During the meeting, she clicked the mouse to close the window.",computer mouse,near
+mouse-near-02,mouse,The barn owl caught the mouse beside the old henhouse.,rodent,near
+mouse-near-02,mouse,He leaned over and plugged the mouse into a spare USB port.,computer mouse,near
+mouse-distractor-01,mouse,"While I typed, the mouse darted behind the keyboard and squeezed into a hole in the wall.",rodent,distractor
+mouse-distractor-01,mouse,I had to unplug the mouse after my cat knocked it off the desk.,computer mouse,distractor
+mouse-distractor-02,mouse,"At the repair desk, the mouse built a nest under the computer monitor using scraps of paper.",rodent,distractor
+mouse-distractor-02,mouse,"At the clinic, the vet clicked the mouse to open a file while the hamster sniffed the edge of the exam table.",computer mouse,distractor
+mouse-late-01,mouse,"I finally found the mouse at the back of the cupboard, where it was nibbling a piece of bread.",rodent,late
+mouse-late-01,mouse,"I finally found the mouse at the back of the cupboard, still in its original box with the USB receiver.",computer mouse,late
+mouse-late-02,mouse,I put the small mouse on the table next to its cage and watched it sniff the air.,rodent,late
+mouse-late-02,mouse,I put the small mouse on the table next to the laptop and plugged in its receiver.,computer mouse,late
+spring-near-01,spring,"The valley bursts into color in spring, with cherry blossoms along the river.",season,near
+spring-near-01,spring,He pulled hard on the spring until the metal coil snapped.,mechanical spring,near
+spring-near-02,spring,"The last snow melts by spring, and wildflowers cover the hillside.",season,near
+spring-near-02,spring,The brass latch has a spring that holds it shut.,mechanical spring,near
+spring-distractor-01,spring,"I replace worn hinges and tighten screws in spring, once the snow has melted around the greenhouse.",season,distractor
+spring-distractor-01,spring,"When the tulips started blooming, I replaced the spring in the garden gate latch.",mechanical spring,distractor
+spring-distractor-02,spring,We spend the first warm weeks of spring replacing worn parts in the lawn mower.,season,distractor
+spring-distractor-02,spring,"As the snow melted around the shed, I took the mower apart and found a broken spring under the starter cover.",mechanical spring,distractor
+spring-late-01,spring,We talked about the spring that had caused so much trouble on the farm when a late frost ruined the peach crop.,season,late
+spring-late-01,spring,We talked about the spring that had caused so much trouble on the farm when it snapped and the gate stopped closing.,mechanical spring,late
+spring-late-02,spring,We read about the spring in the old journal and learned how a late frost had wiped out the apple blossoms.,season,late
+spring-late-02,spring,We read about the spring in the old journal and found a diagram of how the coil moved the clock's lever.,mechanical spring,late
