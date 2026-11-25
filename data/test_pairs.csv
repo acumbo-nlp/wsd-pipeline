@@ -1,0 +1,7 @@
+pair_id,target,sentence,expected_sense
+money_and_river,bank,"She stopped on the bank to watch the river before taking the money home.",river bank
+money_and_river,bank,"She took the money to the bank before stopping to watch the river.",financial institution
+flood,bank,"The bank froze her account after the river flooded the town.",financial institution
+flood,bank,"After the river flooded the town, mud covered the bank where she liked to fish.",river bank
+late_clue,bank,"She waited at the bank until her brother arrived, and then they asked a teller to close their account.",financial institution
+late_clue,bank,"She waited at the bank until her brother arrived, and then they launched their canoe from that muddy shore into the river.",river bank

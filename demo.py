@@ -1,3 +1,4 @@
+import argparse
 import csv
 from pathlib import Path
 
@@ -10,13 +11,42 @@ def predict_bank_sense(sentence):
     return "unknown"
 
 
-csv_path = Path(__file__).parent / "data" / "dev_pairs.csv"
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--method", choices=["keywords", "lesk", "reranker", "reranker-window"], default="keywords")
+parser.add_argument("--data", default="data/dev_pairs.csv")
+args = parser.parse_args()
+
+predict_sense = predict_bank_sense
+if args.method == "lesk":
+    from lesk_baseline import predict_bank_with_lesk
+
+    predict_sense = predict_bank_with_lesk
+
+
+elif args.method == "reranker":
+    from reranker_baseline import predict_bank_with_reranker
+
+    predict_sense = predict_bank_with_reranker
+
+
+
+
+elif args.method == "reranker-window":
+    from reranker_baseline import predict_bank_with_window
+
+    predict_sense = predict_bank_with_window
+
+
+
+
+csv_path = Path(__file__).parent / args.data
 checks_by_pair = {}
 
 with csv_path.open(encoding="utf-8", newline="") as csv_file:
     for row in csv.DictReader(csv_file):
         pair_id = row["pair_id"]
-        prediction = predict_bank_sense(row["sentence"])
+        prediction = predict_sense(row["sentence"])
         is_correct = prediction == row["expected_sense"]
 
         if pair_id not in checks_by_pair:

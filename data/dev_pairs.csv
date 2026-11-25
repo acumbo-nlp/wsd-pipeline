@@ -3,3 +3,6 @@ mixed_clues,bank,"He counted his money on the bank of the river.",river bank
 mixed_clues,bank,"He deposited his money at the bank across from the river.",financial institution
 clear_clues,bank,"I sat on the bank of the river.",river bank
 clear_clues,bank,"I withdrew money from the bank.",financial institution
+
+shared_overlap,bank,"The bank refused to lend him money, so he walked down to the river.",financial institution
+shared_overlap,bank,"He counted his money while sitting on the bank by the river.",river bank
